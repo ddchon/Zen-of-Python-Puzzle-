@@ -2,14 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def q_home(request):
-    return HttpResponse('This is questions homepage.')
+    return render(request, "questions/questionshome.html")
 
 def ind_questions(request):
-    return HttpResponse('This is individual questions page.')
+    return render(request, "questions/ind_question.html")
 
 def q_success(request):
-    return HttpResponse('This is success questions page.')
+    return render(request, "questions/q_success.html")
 
 def q_fail(request):
-    return HttpResponse('This is fail questions page.')
-
+    return render(request, "questions/q_fail.html")
