@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div id="contact-container">
+        <div id="qsubmit-table">
+
+            <h2 class="table_heading" style="text-align: center">Have a puzzle you'd like to share?</h2>
+
+            <br>
+            <br>
+
+            <form action="action_page.php">
+                <label for="question">Tell Us Your Puzzle!<label>
+                <input type="text", id="submit_puzzle" name="submit_puzzle">
+
+                <input type="submit" value="Submit">
+            </form>   
+        </div>
+    </div>
