@@ -1,4 +1,4 @@
-
+﻿
 # Created by https://www.gitignore.io/api/code,venv,linux,django,windows
 # Edit at https://www.gitignore.io/?templates=code,venv,linux,django,windows
 
@@ -15,7 +15,7 @@
 *.pyc
 __pycache__/
 local_settings.py
-# db.sqlite3
+db.sqlite3
 media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
