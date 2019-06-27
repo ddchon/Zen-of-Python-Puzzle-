@@ -69,6 +69,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'zenpythonpages.Member'
+
 WSGI_APPLICATION = 'zenofpythonpuzzle.wsgi.application'
 
 
