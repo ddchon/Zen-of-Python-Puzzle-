@@ -23,27 +23,25 @@
     <br>
     <br>
     <div class="container">
-        <div class="card" style="width: 25rem; margin: 0 30%;">
-            <div class="card-body">
-                <h5 class="card-title">LOGIN:</h5>
-                <form>
-                    <div class="form-group">
-                        <label for="usernameInput">Username:</label>
-                        <input type="text" class="form-control" id="usernameInput" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordInput">Password:</label>
-                        <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="rem_me_box">
-                        <label class="form-check-label" for="rem_me_box">Remember me</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-                <small>New here? <a href="#" class="card-link">Sign Up</a></small>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="card" style="width: 25rem; margin: 0 30%;">
+                <div class="card-body">
+                    <h5 class="card-title">LOGIN:</h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="usernameInput">Email:</label>
+                            <input type="text" class="form-control" id="emailInput" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordInput">Password:</label>
+                            <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <small>New here? <a href="{% url 'new_user' %}" class="card-link">Sign Up</a></small>
             </div>
-        </div>
+            </div>
     </div>
 
 {% endblock content %}
