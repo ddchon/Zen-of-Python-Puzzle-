@@ -3,7 +3,25 @@
 {% block content %}
 
     <div class="container">
-        <div class="col-md-6 mx-auto text-center">
+        <form method="POST">
+            {% csrf_token %}
+            {% for i in registration_form %}
+                <p>
+                    {{ i.label_tag}}
+                    {{ i }}
+
+                    {% if i.help_text %}
+                        <small style="color: gray;">{{ i.help_text }}</small>
+                    {% endif %}
+
+                    {% for error in i.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+            <button info="submit">Register</button>
+        </form>
+        {% comment %} <div class="col-md-6 mx-auto text-center">
             <div class="header-title">
                 <h1 class="wv-heading--title">Register New User</h1>
             </div>
@@ -47,7 +65,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
 
 {% endblock content %}
