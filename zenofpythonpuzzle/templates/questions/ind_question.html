@@ -2,4 +2,38 @@
 
 {% block content %}
 
+    <div class="container">
+        <div class="card" style="margin-top:150px">
+            <div class="card-header">Question</div>
+                <div class="card-body">
+                    <div class="questionsBox">
+                        <div class="questions">Question Text</div>
+                        <form method="POST" name="multi_choice">
+                            <ul class="answerList">
+                                <li>
+                                    <label><input type="radio" name="answerGroup" value="0" id="answerGroup_0">Answer 1</label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="answerGroup" value="1" id="answerGroup_1">Answer 2</label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="answerGroup" value="2" id="answerGroup_2">Answer 3</label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="answerGroup" value="3" id="answerGroup_3">Answer 4</label>
+                                </li>
+                            </ul>
+                            <div class="text-center ">
+                                <button type="submit" class="btn btn-primary">Submit Answer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+
 {% endblock content %}
