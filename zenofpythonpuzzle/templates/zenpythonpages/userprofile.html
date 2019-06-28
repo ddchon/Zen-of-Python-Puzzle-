@@ -4,44 +4,50 @@
 
     <div class="container">
         <div class="row">
-            <h1>Welcome Back!</h1>
-        </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row" style="margin: 0 20em;">
-            <div class="card border-light mb-3" style="width: 25rem; align-content: center;">
-                <img src="/media/testprofilepic.jpeg" class="card-img-top" alt="profile_pic">
-                <div class="card-body">
-                    <h5 class="card-title">Username</h5>
-                    <p class="card-text">Short Bio Info</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">First and Last Name</li>
-                    <li class="list-group-item">Email</li>
-                    <li class="list-group-item">Member since: ...</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row" style="border: 1px solid black;"></div>
-        <br>
-            <h5>Your progress:</h5>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <h5 style="margin: 0 22% 2%;">Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
-            <a href="{% url 'q_home' %}">
-                <img src="/media/win95-prompt.png" class="cmd_img" alt="cmd_terminal" style="margin: 0 20em; width: 50em; height: 30em;">
-            </a>
-        </div>
-    </div>
-    <br>
-    <br>
+            {% if user.is_authenticated %}
+                <h1>Welcome {{ user.username }}! </h1>
+                    <p><a href="{% url 'logout' %}">Logout</a></p>
+                    <div class="container">
+                        <div class="row" style="margin: 0 20em;">
+                            <div class="card border-light mb-3" style="width: 25rem; align-content: center;">
+                                {% comment %} <img src={{  }} class="card-img-top" alt="profile_pic"> {% endcomment %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ user.username }}</h5>
+                                    <p class="card-text">{{ user.bio }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ user.first_name }} {{ user.last_name }}</li>
+                                <li class="list-group-item">{{ user.email }}</li>
+                                <li class="list-group-item">Member since: {{ user.date_joined }}</li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container">
+                        <div class="row" style="border: 1px solid black;"></div>
+                        <br>
+                            <h5>Your progress:</h5>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <h5 style="margin: 0 22% 2%;">Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
+                                <a href="{% url 'q_home' %}">
+                                <img src="/media/win95-prompt.png" class="cmd_img" alt="cmd_terminal" style="margin: 0 20em; width: 50em; height: 30em;">
+                                </a>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
 
+            {% else %}
+                <p>You are not logged in</p>
+                <a href="{% url 'home' %}">Login</a>
+            {% endif %}
+        </div>
+    </div>
+    <br>
 {% endblock content %}
