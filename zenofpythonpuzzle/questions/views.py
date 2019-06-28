@@ -12,11 +12,15 @@ def ind_questions(request, id):
         print(question)
         return render(request, "questions/ind_question.html", context=context)
 
-# def submitted_answer(request):
-#         if request.method == "POST":
-#         user_answer = new_question.answer
+def submitted_answer(request):
+        if request.method == "POST":
+                q = Question.objects.get(id=request.POST['question'])
+                if q.answer == request.POST["answerGroup"]:
+                        return redirect("q_success")
+                else:
+                        return redirect("q_fail")
 
-#         if user_answer != 
+
 
 def new_question(request):
     if request.method == "POST":
