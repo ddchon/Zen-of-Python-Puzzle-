@@ -14,7 +14,7 @@ def ind_questions(request, id):
 
 # def submitted_answer(request):
 #         if request.method == "POST":
-#         user_answer = new_question.answer
+#               user_answer = new_question.answer
 
 #         if user_answer != 
 
