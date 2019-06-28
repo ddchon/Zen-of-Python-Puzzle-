@@ -20,8 +20,6 @@ def submitted_answer(request):
                 else:
                         return redirect("q_fail")
 
-
-
 def new_question(request):
     if request.method == "POST":
         question_list = Question (question=request.POST["question"],

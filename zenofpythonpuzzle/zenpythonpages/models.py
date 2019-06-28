@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import User
+
 
 class MyAccountManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -31,6 +33,9 @@ class MyAccountManager(BaseUserManager):
 
 
 class Member(AbstractBaseUser):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField(verbose_name="email", max_length=60, unique=True)
     username = models.CharField(max_length=30, unique=True)
     date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
@@ -38,9 +43,7 @@ class Member(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    # first_name = models.CharField(max_length=30)
-    # last_name = models.CharField(max_length=30)
-    email = models.EmailField(verbose_name="email", max_length=60, unique=True)
+    bio = models.TextField()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
