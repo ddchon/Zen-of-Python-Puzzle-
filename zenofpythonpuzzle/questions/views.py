@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Question
+from zenpythonpages.models import Member
 
 def q_home(request):
     return render(request, "questions/questionshome.html")
@@ -12,10 +13,17 @@ def ind_questions(request, id):
         print(question)
         return render(request, "questions/ind_question.html", context=context)
 
-def submitted_answer(request):
+def submitted_answer(request, id):
         if request.method == "POST":
                 q = Question.objects.get(id=request.POST['question'])
                 if q.answer == request.POST["answerGroup"]:
+                        member = Member.objects.get(id=request.user.id)
+                        if not str(request.POST['question']) in str(member.answered_comp).split(","):
+                                if len(str(member.answered_comp).split(",")) == 0:
+                                        member.answered_comp = str(request.POST['question'])
+                                else:
+                                        member.answered_comp = str(member.answered_comp) + ", " + str(request.POST['question'])
+                        member.save()              
                         return redirect("q_success")
                 else:
                         return redirect("q_fail")

@@ -5,9 +5,14 @@
     <div id="q_fail-container">
         <h2 class="fail_heading" style="text-align: center">Shucks! Looks like you've been bamboozled!</h2>
 
-        {% comment %} <a href="{% url 'ind_question' question.id %}">Try Again?</a> {% endcomment %}
-        <a href="{% url 'q_home' %}">Back to Zen of Python</a>
-        <a href="{% url 'profile' %}">Back to User Profile</a>
+        {% comment %} <a href="javascript:history.back()">Try Again?</a> {% endcomment %}
+        <button type="button" onclick="javascript:history.back()">Try Again?</button>
+        <br>
+        {% comment %} <a href="{% url 'q_home' %}">Back to Zen of Python</a> {% endcomment %}
+        <button type="button" onclick="window.location.href = '{% url "q_home" %}'">Back to Zen of Python</button>
+        <br>
+        {% comment %} <a href="{% url 'profile' %}">Back to User Profile</a> {% endcomment %}
+        <button type="button" onclick="window.location.href = '{% url "profile" %}'">Back to User Profile</button>
     </div>
 
 {% endblock content %}
