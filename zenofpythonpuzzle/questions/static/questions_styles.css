@@ -27,3 +27,7 @@ a {
     color: black;
     font-weight: bold;
 }
+
+button {
+    background-color: yellow;
+}
