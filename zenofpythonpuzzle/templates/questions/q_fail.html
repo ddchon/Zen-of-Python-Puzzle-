@@ -9,10 +9,10 @@
         <button type="button" onclick="javascript:history.back()">Try Again?</button>
         <br>
         {% comment %} <a href="{% url 'q_home' %}">Back to Zen of Python</a> {% endcomment %}
-        <button type="button" onclick="{% url 'q_home' %}">Back to Zen of Python</button>
+        <button type="button" onclick="window.location.href = '{% url "q_home" %}'">Back to Zen of Python</button>
         <br>
         {% comment %} <a href="{% url 'profile' %}">Back to User Profile</a> {% endcomment %}
-        <button type="button" onclick="{% url 'profile' %}">Back to User Profile</button>
+        <button type="button" onclick="window.location.href = '{% url "profile" %}'">Back to User Profile</button>
     </div>
 
 {% endblock content %}
