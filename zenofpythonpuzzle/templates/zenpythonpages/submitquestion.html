@@ -10,16 +10,13 @@
             <br>
             <br>
 
-            <form action="action_page.php">
+            <form action="{% url 'submit_q' %}" method="POST">
+                {% csrf_token %}
                 <label for="question">Tell Us Your Puzzle!<label>
-                <input type="text", id="submit_puzzle" name="submit_puzzle">
-
-                <input type="submit" value="Submit">
+                <br>
+                <textarea name="submit_puzzle" id="submit_puzzle" cols="30" rows="10">Type question here.</textarea>
+                <input type="submit">
             </form>   
         </div>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c6b244d3a2b80457bd39df31b7bdbdc302486260
 {% endblock content %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm, UserUpdateForm
 from django.contrib.auth.forms import UserChangeForm
+from .models import Member, Progress
 
 def index(request):
     context = {}
@@ -38,14 +39,14 @@ def new_user(request):
         context['registration_form'] = form
     return render(request, "zenpythonpages/signup.html", context)
 
-
 def profile(request):
-    u_form = UserUpdateForm()
-
-    context = {
-        'u_form': u_form
-    }
-    return render(request, "zenpythonpages/userprofile.html", context)
+   member = Progress.objects.get(id=request.user.id)
+   answer_perc = int(len(member.answered_comp.split(",")) / 19) * 100
+   context = {
+           "answer_perc" : answer_perc
+   }
+   print(answer_perc)
+   return render(request, "zenpythonpages/userprofile.html", context=context)
 
 def edit_profile(request):
     if request.method == "POST":
@@ -61,8 +62,19 @@ def edit_profile(request):
         }
     return render(request, "zenpythonpages/editprofile.html", context)
 
+def delete_user(request, username):
+    try:
+        to_delete = Member.objects.get(username=username)
+        to_delete.delete()
+        print("User Deleted")
+    except Member.DoesNotExit:
+        print("User Does Not Exist")
+        return redirect("profile")
+    return redirect("home")
+
 def submit_q(request):
     return render(request, "zenpythonpages/submitquestion.html")
 
 def submit_comp(request):
     return render(request, "zenpythonpages/submissioncomplete.html")
+
