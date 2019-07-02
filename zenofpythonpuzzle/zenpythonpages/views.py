@@ -40,12 +40,7 @@ def new_user(request):
 
 
 def profile(request):
-    u_form = UserUpdateForm()
-
-    context = {
-        'u_form': u_form
-    }
-    return render(request, "zenpythonpages/userprofile.html", context)
+    return render(request, "zenpythonpages/userprofile.html")
 
 def edit_profile(request):
     if request.method == "POST":
