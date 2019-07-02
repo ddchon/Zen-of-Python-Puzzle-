@@ -60,3 +60,10 @@ class Member(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
+
+class SubmitQuestion(models.Model):
+    question = models.TextField()
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.member

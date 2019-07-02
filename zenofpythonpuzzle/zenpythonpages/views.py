@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm
+from .models import Member
 
 def index(request):
     context = {}
@@ -40,6 +41,13 @@ def new_user(request):
 
 def profile(request):
     return render(request, "zenpythonpages/userprofile.html")
+
+def delete_user(request):
+    if request.method == "POST":
+        to_delete = Member.objects.get(id=request.POST["id"])
+        to_delete.delete()
+        return redirect("home")
+    return redirect("home")
 
 def submit_q(request):
     return render(request, "zenpythonpages/submitquestion.html")
