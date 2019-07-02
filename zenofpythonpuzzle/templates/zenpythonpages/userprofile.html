@@ -2,36 +2,34 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="row">
-            {% if user.is_authenticated %}
-                <h1>Welcome {{ user.username }}! </h1>
-                <p><a href="{% url 'logout' %}">Logout</a></p>
-                <div class="container">
-                    <div class="row">
-                        <div class=".col-6">
-                            <img src="/media/testprofilepic.jpeg" class="img-thumbnail" style="width: 20em; height: 25em;" alt="ProfilePic">
+    {% if user.is_authenticated %}
+        <div class="container">
+            <div class="row">
+                <div class=".col-6">
+                    <img src="/media/testprofilepic.jpeg" class="img-thumbnail" style="width: 20em; height: 25em;" alt="ProfilePic">
+                </div>
+                <div class=".col-6">
+                    <div class="card" style="margin: 0 100px; width: 35rem; height: 25em;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ user.username}}</h5>
+                        <p class="card-text">{{ user.bio }}</p>
                         </div>
-                        <div class=".col-6">
-                            <div class="card" style="margin: 0 100px; width: 35rem; height: 25em;">
-                                <div class="card-body">
-                                <h5 class="card-title">{{ user.username}}</h5>
-                                <p class="card-text">{{ user.bio }}</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">{{ user.first_name}} {{ user.last_name}}</li>
-                                    <li class="list-group-item">{{ user.email }}</li>
-                                    <li class="list-group-item">Joined: {{  user.date_joined }}</li>
-                                </ul>
-                                <a href="{% url 'editprofile' %}">Update Profile</a>
-                            </div>
-                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ user.first_name}} {{ user.last_name}}</li>
+                            <li class="list-group-item">{{ user.email }}</li>
+                            <li class="list-group-item">Joined: {{  user.date_joined }}</li>
+                        </ul>
+                        <a href="{% url 'editprofile' %}">Update Profile</a>
                     </div>
+                {% comment %} <button type="button" onclick="window.location.href = '{% url "submit_q" %}'">Submit A Question</button> {% endcomment %}
+                <form action="{% url 'delete_user' user.username %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete Account">
+                </form>
                 </div>
             </div>
         </div>
                 <br>
-
         <div class="container">
             <div class="row" style="border: 1px solid black;"></div>
             <br>
@@ -42,19 +40,15 @@
             </div>
             <br>
             <div class="row">
-            <h5 style="margin: 0 22% 2%;">Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
-            <a href="{% url 'q_home' %}">
-            <img src="/media/win95-prompt.png" class="cmd_img" alt="cmd_terminal" style="margin: 0 20em; width: 50em; height: 30em;">
-            </a>
-            </div>
-            {% else %}
-                <p>You are not logged in</p>
-                <a href="{% url 'home' %}">Login</a>
-            {% endif %} 
+                <h5 style="margin: 0 22% 2%;">Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
+                    <a href="{% url 'q_home' %}">
+                    <img src="/media/win95-prompt.png" class="cmd_img" alt="cmd_terminal" style="margin: 0 20em; width: 50em; height: 30em;">
+                    </a>
             </div>
         </div>
-    </div>
-    <br>
-    <br>
-    <br>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'home' %}">Login</a>
+    {% endif %} 
+
 {% endblock content %}
