@@ -21,11 +21,11 @@
                         </ul>
                         <a href="{% url 'editprofile' %}">Update Profile</a>
                     </div>
-                {% comment %} <form action="{% url 'delete_user' %}" method="POST">
+                {% comment %} <button type="button" onclick="window.location.href = '{% url "submit_q" %}'">Submit A Question</button> {% endcomment %}
+                <form action="{% url 'delete_user' user.username %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="id" value="{{ id }}">
                     <input type="submit" value="Delete Account">
-                </form> {% endcomment %}
+                </form>
                 </div>
             </div>
         </div>
