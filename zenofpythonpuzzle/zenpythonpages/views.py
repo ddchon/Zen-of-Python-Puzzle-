@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm, UserUpdateForm
 from django.contrib.auth.forms import UserChangeForm
-from .models import Member, Progress
+from .models import Member, SubmitQuestion
 
 def index(request):
     context = {}
@@ -40,13 +40,14 @@ def new_user(request):
     return render(request, "zenpythonpages/signup.html", context)
 
 def profile(request):
-   member = Progress.objects.get(id=request.user.id)
-   answer_perc = int(len(member.answered_comp.split(",")) / 19) * 100
-   context = {
-           "answer_perc" : answer_perc
-   }
-   print(answer_perc)
-   return render(request, "zenpythonpages/userprofile.html", context=context)
+    # member = Member.objects.get(username=request.user.username)
+    # answer_perc = int(len(member.answered_comp.split(",")) / 19) * 100
+    # context = {
+    #         "answer_perc" : answer_perc
+    # }
+    # print(answer_perc)
+    # return render(request, "zenpythonpages/userprofile.html", context=context)
+    return render(request, "zenpythonpages/userprofile.html")
 
 def edit_profile(request):
     if request.method == "POST":
@@ -73,6 +74,12 @@ def delete_user(request, username):
     return redirect("home")
 
 def submit_q(request):
+    if request.method == "POST":
+        member = Member.objects.get(username=request.user.username)
+        new_q = SubmitQuestion(title=request.POST["title"], question=request.POST["question"], member=member)
+        print(new_q)
+        new_q.save()
+        return redirect("submit_comp")
     return render(request, "zenpythonpages/submitquestion.html")
 
 def submit_comp(request):
