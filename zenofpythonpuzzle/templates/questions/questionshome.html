@@ -3,14 +3,13 @@
 
 {% block content %}
     <div id="master-container">
-        <div id="zpython-container">
-            <h2 style="text-align: center">
-                <img src="https://fontmeme.com/permalink/190626/009f1db8cb54f3120f766d69b35d0794.png"
-                alt="starcraft-font" border="0">
-            </h2>
+        <div class="row">
+            <h2 style="text-align: center;">Zen of Python Puzzles</h2>
+        </div>
+    </div>
 
-            <br>
-
+    <div id="zpython-container">
+        <div class="row">
             <div id="zen_python">
                 <div class="q-links">
                     <a href="{% url 'ind_question' 1 %}">Beautiful is better than ugly.</a>
@@ -54,6 +53,5 @@
             </div>
         </div>
     </div>        
-</div>
 
 {% endblock content %}

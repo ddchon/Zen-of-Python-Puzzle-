@@ -8,6 +8,5 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("profile/edit", views.edit_profile, name="editprofile"),
     path("submit_q/", views.submit_q, name="submit_q"),
-    path("submit_comp/", views.submit_comp, name="submit_comp"),
     path("delete_user/<username>", views.delete_user, name="delete_user"),
 ]
