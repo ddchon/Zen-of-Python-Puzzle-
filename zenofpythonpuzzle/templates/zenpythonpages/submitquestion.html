@@ -19,7 +19,11 @@
             </form>   
         </div>
         <div>
-            
+            {% if question %}
+                {% for i in question %}
+                    
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endblock content %}

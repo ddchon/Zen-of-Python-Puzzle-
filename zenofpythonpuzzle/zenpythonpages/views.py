@@ -78,7 +78,6 @@ def submit_q(request):
     if request.method == "POST":
         member = Member.objects.get(username=request.user.username)
         new_q = SubmitQuestion(title=request.POST["title"], question=request.POST["question"], member=member)
-        print(new_q)
         new_q.save()
         return redirect("submit_comp")
     return render(request, "zenpythonpages/submitquestion.html")
