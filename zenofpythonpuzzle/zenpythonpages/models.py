@@ -61,7 +61,6 @@ class Member(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
 
-
 class SubmitQuestion(models.Model):
     title = models.CharField(max_length=30)
     question = models.TextField()
@@ -69,4 +68,3 @@ class SubmitQuestion(models.Model):
 
     def __str__(self):
         return self.title
-        
