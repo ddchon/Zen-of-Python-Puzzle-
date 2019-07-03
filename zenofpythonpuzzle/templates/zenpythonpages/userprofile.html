@@ -4,7 +4,12 @@
 <br>
 <br>
 <br>
-    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="row">
+            {% if user.is_authenticated %}
+                <h1>Welcome {{ user.username }}!</h1>
+                <p><a href="{% url 'logout' %}">Logout</a></p>
+
         <div class="container">
             <div class="row">
                 <div class=".col-6">
@@ -30,7 +35,7 @@
         </div>
                 <br>
         <div class="container">
-            <div class="row" style="border: 1px solid black;"></div>
+            <div class="row"></div>
             <br>
             <h5>Your progress:</h5>
             <div class="progress">
