@@ -11,6 +11,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
         <div class="navbar-nav ml-auto">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <a href="{% url 'profile' %}" class="nav-item nav-link my_links">Profile</a>
             <a href="{% url 'q_home' %}" class="nav-item nav-link my_links">Questions</a>
             <a href="{% url 'login' %}" class="nav-item nav-link my_links">Login</a>

@@ -4,6 +4,7 @@ from .forms import RegistrationForm, UserUpdateForm
 from django.contrib.auth.forms import UserChangeForm
 from .models import Member, SubmitQuestion
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def index(request):
     context = {}
@@ -16,6 +17,7 @@ def index(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(email=email, password=raw_password)
             login(request, account)
+            messages.success(request, f"Your account has been created!")
             return redirect('profile')
         else:
             context['registration_form'] = form
@@ -32,6 +34,7 @@ def new_user(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(email=email, password=raw_password)
             login(request, account)
+            messages.success(request, f"Your account has been created!")
             return redirect('profile')
         else:
             context['registration_form'] = form
