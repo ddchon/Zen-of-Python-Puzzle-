@@ -45,6 +45,7 @@ class Member(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     bio = models.TextField()
+    answered_comp = models.TextField()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
@@ -59,20 +60,4 @@ class Member(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
-
-
-class Progress(models.Model):
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
-    answered_comp = models.TextField()
-
-    def __str__(self):
-        return self.member
-
-
-# class SubmitQuestion(models.Model):
-#     question = models.TextField()
-#     member = models.ForeignKey(Member, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.member
         

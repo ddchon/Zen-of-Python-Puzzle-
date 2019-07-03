@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm, UserUpdateForm
 from django.contrib.auth.forms import UserChangeForm
-from .models import Member, Progress
+from .models import Member
 
 def index(request):
     context = {}
@@ -40,7 +40,7 @@ def new_user(request):
     return render(request, "zenpythonpages/signup.html", context)
 
 def profile(request):
-   member = Progress.objects.get(id=request.user.id)
+   member = Member.objects.get(username=request.user.username)
    answer_perc = int(len(member.answered_comp.split(",")) / 19) * 100
    context = {
            "answer_perc" : answer_perc
