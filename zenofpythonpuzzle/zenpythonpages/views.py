@@ -82,13 +82,17 @@ def delete_user(request, username):
     return redirect("home")
 
 def submit_q(request):
+    all_questions = SubmitQuestion.objects.all()
+    context = {
+        "all_questions": all_questions
+    }
+
     if request.method == "POST":
         member = Member.objects.get(username=request.user.username)
         new_q = SubmitQuestion(title=request.POST["title"], question=request.POST["question"], member=member)
-        print(new_q)
         new_q.save()
         return redirect("submit_comp")
-    return render(request, "zenpythonpages/submitquestion.html")
+    return render(request, "zenpythonpages/submitquestion.html", context=context)
 
 def submit_comp(request):
     return render(request, "zenpythonpages/submissioncomplete.html")
