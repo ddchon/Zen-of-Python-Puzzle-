@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm, UserUpdateForm
 from django.contrib.auth.forms import UserChangeForm
 from .models import Member, SubmitQuestion
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     context = {}
@@ -39,6 +40,7 @@ def new_user(request):
         context['registration_form'] = form
     return render(request, "zenpythonpages/signup.html", context)
 
+@login_required(login_url='/')
 def profile(request):
    member = Member.objects.get(username=request.user.username)
    answer_perc = int(len(member.answered_comp.split(",")) / 19 * 100)
