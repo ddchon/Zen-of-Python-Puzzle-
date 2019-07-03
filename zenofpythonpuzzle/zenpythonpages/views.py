@@ -48,12 +48,11 @@ def new_user(request):
 def profile(request):
     member = Member.objects.get(username=request.user.username)
     if not len(member.answered_comp) == 0:
-        answer_perc = int(len(member.answered_comp.split(",")) / 19 * 100)
+        answer_perc = (len(member.answered_comp.split(",")) * 100) / 19
         context = {
             "answer_perc" : answer_perc
         }
         print(answer_perc)
-        print(int(len(member.answered_comp.split(","))))
         return render(request, "zenpythonpages/userprofile.html", context=context)
 
     return render(request, "zenpythonpages/userprofile.html")
