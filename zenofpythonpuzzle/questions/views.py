@@ -13,19 +13,28 @@ def ind_questions(request, id):
         print(question)
         return render(request, "questions/ind_question.html", context=context)
 
-answered = []
 def submitted_answer(request, id):
         if request.method == "POST":
                 q = Question.objects.get(id=request.POST['question'])
                 if q.answer == request.POST["answerGroup"]:
                         member = Member.objects.get(id=request.user.id)
                         if not str(request.POST['question']) in str(member.answered_comp).split(","):
-                                if len(str(member.answered_comp).split(",")) == 0:
+                                if len(str(member.answered_comp)) == 0:
                                         member.answered_comp = str(request.POST['question'])
                                 else:
-                                        answered.append(str(request.POST['question']))
-                                        member.answered_comp = answered
-                                        print(answered)
+                                        answered = []
+                                        if len(member.answered_comp) == 0:
+                                                answered.append(str(request.POST['question']))
+                                                member.answered_comp = answered
+                                                print(answered)
+                                                answered = []
+                                        else:
+                                                answered.append(member.answered_comp)
+                                                answered.append(str(request.POST['question']))
+                                                member.answered_comp = answered
+                                                print(answered)
+                                                answered = []
+
                         member.save()              
                         return redirect("q_success")
                 else:
