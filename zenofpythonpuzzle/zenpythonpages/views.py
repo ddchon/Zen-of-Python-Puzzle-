@@ -83,8 +83,16 @@ def delete_user(request, username):
 
 def submit_q(request):
     all_questions = SubmitQuestion.objects.all()
+    all_questions = all_questions[::-1]
     context = {
-        "all_questions": all_questions
+    }
+
+    # my_questions = SubmitQuestion.objects.get(id=request.POST["id"])
+    # my_questions = my_questions[::-1]
+
+    context = {
+        "all_questions": all_questions,
+        # "my_questions": my_questions
     }
 
     if request.method == "POST":

@@ -18,16 +18,46 @@
                 <input type="submit">
             </form>   
         </div>
-        {% if all_questions %}
-            {% for i in all_questions %}
+        <div>
+            <div class="container">
 
-                <div>
-                    <p>{{ i.member }}</p>
-                    <p>{{ i.title }}</p>
-                    <p>{{ i.question }}</p>
+                <div class="row">
+                    <div class="col-6">
+                        <h2>All Submitted Questions</h2>
+                        {% if all_questions %}
+                            {% for i in all_questions %}
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>{{ i.member }}</p>
+                                        <p>{{ i.title }}</p>
+                                        <p>{{ i.question }}</p>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="col-6">
+                        <h2>All Submitted Questions</h2>
+                        {% if all_questions %}
+                            {% for i in all_questions %}
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>{{ i.member }}</p>
+                                        <p>{{ i.title }}</p>
+                                        <p>{{ i.question }}</p>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
 
-            {% endfor %}
-        {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock content %}
