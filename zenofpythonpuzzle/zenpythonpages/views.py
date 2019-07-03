@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def index(request):
+    messages.warning(request, f"You are not logged in!")
     context = {}
 
     if request.POST:
@@ -43,7 +44,7 @@ def new_user(request):
         context['registration_form'] = form
     return render(request, "zenpythonpages/signup.html", context)
 
-@login_required(login_url='/')
+@login_required(login_url='/')    
 def profile(request):
     member = Member.objects.get(username=request.user.username)
     if not len(member.answered_comp) == 0:
@@ -63,6 +64,7 @@ def edit_profile(request):
 
         if form.is_valid():
             form.save()
+            messages.success(request, f"Your account has been updated!")
             return redirect('profile')
     else:
         form = UserUpdateForm(instance=request.user)
@@ -75,7 +77,7 @@ def delete_user(request, username):
     try:
         to_delete = Member.objects.get(username=username)
         to_delete.delete()
-        print("User Deleted")
+        messages.danger(request, f"Your account has been deleted!")
     except Member.DoesNotExit:
         print("User Does Not Exist")
         return redirect("profile")
@@ -91,9 +93,7 @@ def submit_q(request):
         member = Member.objects.get(username=request.user.username)
         new_q = SubmitQuestion(title=request.POST["title"], question=request.POST["question"], member=member)
         new_q.save()
-        return redirect("submit_comp")
+        messages.success(request, f"Your question has been successfully submitted!")
+        return redirect("profile")
     return render(request, "zenpythonpages/submitquestion.html", context=context)
-
-def submit_comp(request):
-    return render(request, "zenpythonpages/submissioncomplete.html")
 
