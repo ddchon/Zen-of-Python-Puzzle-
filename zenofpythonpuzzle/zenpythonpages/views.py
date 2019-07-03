@@ -41,7 +41,7 @@ def new_user(request):
 
 def profile(request):
    member = Member.objects.get(username=request.user.username)
-   answer_perc = int(len(member.answered_comp.split(",")) / 19) * 100
+   answer_perc = int(len(member.answered_comp.split(",")) / 19 * 100)
    context = {
            "answer_perc" : answer_perc
    }
