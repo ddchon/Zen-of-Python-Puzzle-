@@ -13,6 +13,7 @@ def ind_questions(request, id):
         print(question)
         return render(request, "questions/ind_question.html", context=context)
 
+answered = []
 def submitted_answer(request, id):
         if request.method == "POST":
                 q = Question.objects.get(id=request.POST['question'])
@@ -22,7 +23,9 @@ def submitted_answer(request, id):
                                 if len(str(member.answered_comp).split(",")) == 0:
                                         member.answered_comp = str(request.POST['question'])
                                 else:
-                                        member.answered_comp = str(member.answered_comp) + ", " + str(request.POST['question'])
+                                        answered.append(str(request.POST['question']))
+                                        member.answered_comp = answered
+                                        print(answered)
                         member.save()              
                         return redirect("q_success")
                 else:
