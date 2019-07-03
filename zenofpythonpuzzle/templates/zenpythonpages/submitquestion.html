@@ -12,9 +12,9 @@
 
             <form action="{% url 'submit_q' %}" method="POST">
                 {% csrf_token %}
-                <label for="question">Tell Us Your Puzzle!<label>
+                <input name="title" type="text" placeholder="Put a title here" required>
                 <br>
-                <textarea name="submit_puzzle" id="submit_puzzle" cols="30" rows="10">Type question here.</textarea>
+                <textarea name="question" id="question" cols="30" rows="10">Type a question here.</textarea>
                 <input type="submit">
             </form>   
         </div>

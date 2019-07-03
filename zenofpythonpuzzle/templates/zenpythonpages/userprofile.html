@@ -21,7 +21,7 @@
                         </ul>
                         <a href="{% url 'editprofile' %}">Update Profile</a>
                     </div>
-                {% comment %} <button type="button" onclick="window.location.href = '{% url "submit_q" %}'">Submit A Question</button> {% endcomment %}
+                <button type="button" onclick="window.location.href = '{% url "submit_q" %}'">Submit A Question</button>
                 <form action="{% url 'delete_user' user.username %}" method="POST">
                     {% csrf_token %}
                     <input type="submit" value="Delete Account">
