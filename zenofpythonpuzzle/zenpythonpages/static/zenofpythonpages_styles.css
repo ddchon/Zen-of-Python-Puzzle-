@@ -7,6 +7,7 @@
     text-align: center;
     color: white !important;
     font-size: small;
+    z-index: auto;
 }
 
 .my_navbar {
@@ -17,6 +18,7 @@
     text-align: center;
     color: white !important;
     font-size: small;
+    z-index: auto;
 }
 
 .nav-item {
