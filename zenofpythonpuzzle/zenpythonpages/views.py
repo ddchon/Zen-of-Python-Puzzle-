@@ -42,8 +42,8 @@ def profile(request):
     	}
     	return render(request, "zenpythonpages/userprofile.html", context=context)
 
-    	else:
-        	return redirect('/accounts/login')
+    else:
+        return redirect('/accounts/login')
 
 def edit_profile(request):
     if request.method == "POST":
