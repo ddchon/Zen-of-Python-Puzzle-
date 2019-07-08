@@ -4,10 +4,11 @@ from zenpythonpages.models import Member
 
 
 def q_home(request):
-    member = Member.objects.get(id=request.user.id)
-    correct_answers = []
-    print(correct_answers)
-    for a in member.answered_comp.split(","):
+    if request.user.is_authenticated:
+      member = Member.objects.get(id=request.user.id)
+      correct_answers = []
+      print(correct_answers)
+      for a in member.answered_comp.split(","):
         print(a)
         if int(a) < 10:
             correct_answers.append("0" + str(a))
@@ -16,7 +17,8 @@ def q_home(request):
     print(correct_answers)
     # print(member.answered_comp)
     return render(request, "questions/questionshome.html")
-
+    else:
+        return redirect('/accounts/login')
 
 def ind_questions(request, id):
     question = Question.objects.get(id=id)
@@ -37,8 +39,11 @@ def submitted_answer(request, id):
                     member.answered_comp += str(request.POST['question'])
                 else:
                     member.answered_comp += "," + str(request.POST['question'])
-                    
+   
                 member.save()
+                return redirect("q_success")
+
+            else:
                 return redirect("q_success")
         else:
             return redirect("q_fail")
