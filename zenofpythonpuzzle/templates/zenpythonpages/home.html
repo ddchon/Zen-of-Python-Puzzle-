@@ -3,7 +3,9 @@
 {% block content %}
 
     <div class="container">
-        <div class="row">
+    <br>
+    <br>
+        <div class="row" style="margin: 5em 0 4em 0;">
             <h1>Zen of Python Puzzles</h1>
         </div>
     </div>
@@ -16,8 +18,8 @@
     <br>
     <div class="container">
         <div class="row">
-            <h3> ABOUT US </h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis voluptatum cupiditate commodi repellendus vero a quod, delectus facilis iste? Rerum quisquam distinctio maiores eaque quasi libero aliquam doloremque recusandae aut.</p>
+            <h3 style="font-weight: bold;"> What is this? </h3>
+            <p>We are here to provide users with a site to help REINFORCE Basics to Advanced Logic, Problem-Solving, and most importantly PYTHON.  Try your hand at our problems based on the 'ZEN OF PYTHON'.  Each line has a question related to the theme of that specific line.    <br><br>Ready to begin? </p>
         </div>
     </div>
     <br>
@@ -27,12 +29,16 @@
     {% comment %} {% if user %}
     <h1> {{ user.username }}
     {% endif %} {% endcomment %}
-    <h1><a href="accounts/login">Login</a></h1>
+    <h1 style="margin: 50px 0 10px;"><a href="accounts/login">Login</a></h1>
 
 
-        <small>New here? <a href="{% url 'new_user' %}" class="card-link">Sign Up</a></small>
+        <small style="margin: 0 0 20px;">New here? <a href="{% url 'new_user' %}" class="card-link">Sign Up</a></small>
             </div>
             </div>
     </div>
+    <br>
+    <br>
+    <br>
+
 
 {% endblock content %}

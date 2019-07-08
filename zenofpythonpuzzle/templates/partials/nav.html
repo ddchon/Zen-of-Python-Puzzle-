@@ -1,0 +1,25 @@
+<div class="my_navbar navbar navbar-expand-md">
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle Navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <div class="navbar-nav ml-auto">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <a href="{% url 'profile' %}" class="nav-item nav-link my_links">Profile</a>
+            <a href="{% url 'q_home' %}" class="nav-item nav-link my_links">Questions</a>
+        </div>
+    </div>
+</div>

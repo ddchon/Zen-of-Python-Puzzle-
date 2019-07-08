@@ -10,16 +10,54 @@
             <br>
             <br>
 
-            <form action="action_page.php">
-                <label for="question">Tell Us Your Puzzle!<label>
-                <input type="text", id="submit_puzzle" name="submit_puzzle">
-
-                <input type="submit" value="Submit">
+            <form action="{% url 'submit_q' %}" method="POST">
+                {% csrf_token %}
+                <input name="title" type="text" placeholder="Put a title here" required>
+                <br>
+                <textarea name="question" id="question" cols="30" rows="10">Type a question here.</textarea>
+                <input type="submit">
             </form>   
         </div>
-    </div>
-<<<<<<< HEAD
-=======
+        <div>
+            <div class="container">
 
->>>>>>> c6b244d3a2b80457bd39df31b7bdbdc302486260
+                <div class="row">
+                    <div class="col-6">
+                        <h2>Other User's Submitted Questions</h2>
+                        {% if all_questions %}
+                            {% for i in all_questions %}
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>{{ i.member }}</p>
+                                        <p>{{ i.title }}</p>
+                                        <p>{{ i.question }}</p>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="col-6">
+                        <h2>My Submitted Questions</h2>
+                        {% if my_questions %}
+                            {% for i in my_questions %}
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>{{ i.member }}</p>
+                                        <p>{{ i.title }}</p>
+                                        <p>{{ i.question }}</p>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 {% endblock content %}

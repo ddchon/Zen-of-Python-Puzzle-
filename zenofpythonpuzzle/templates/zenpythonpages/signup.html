@@ -3,8 +3,12 @@
 {% block content %}
 
     <div class="container">
+    <br>
+    <br>
+    <br>
         <form method="POST">
             {% csrf_token %}
+            {{ form.as_p }}
             {% for i in registration_form %}
                 <p>
                     {{ i.label_tag}}
@@ -29,6 +33,9 @@
             {% endfor %}
             <button info="submit">Register</button>
         </form>
+        <br>
+        <br>
+        <br>
     </div>
 
 {% endblock content %}

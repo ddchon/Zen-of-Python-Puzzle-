@@ -46,6 +46,7 @@ class Member(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     bio = models.TextField()
     answered_comp = models.TextField()
+    image = models.ImageField(default='images/default.jpeg', upload_to='images/')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
@@ -60,3 +61,11 @@ class Member(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
+
+class SubmitQuestion(models.Model):
+    title = models.CharField(max_length=30)
+    question = models.TextField()
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
