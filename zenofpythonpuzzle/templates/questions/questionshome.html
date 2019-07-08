@@ -10,6 +10,7 @@
 
     <div id="zpython-container">
         <div class="row">
+            {% if user.is_authenticated %}
             <div id="zen_python">
                 <div class="q-links">
                     {% if "01" in correct_answers %}
@@ -125,8 +126,13 @@
                     {% else %}
                         <p class="q-q"><a href="{% url 'ind_question' 19 %}">Namespaces are one honking great idea -- let's do more of those!</a></p>
                     {% endif %}
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <p>You are not logged in </p>
+                <br>
+                <a href="{% url 'home' %}">Go to Home</a>
+            {% endif %} 
         </div>
     </div>        
 </div>

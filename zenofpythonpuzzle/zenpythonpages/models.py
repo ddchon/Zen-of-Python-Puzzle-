@@ -46,6 +46,7 @@ class Member(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     bio = models.TextField()
     answered_comp = models.TextField()
+    image = models.ImageField(default='images/default.jpeg', upload_to='images/')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
