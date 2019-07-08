@@ -11,22 +11,20 @@ def q_home(request):
         if len(member.answered_comp) > 0:
             for a in member.answered_comp.split(","):
                 print(a)
-            if int(a) < 10:
-                correct_answers.append("0" + str(a))
-            else:
-                correct_answers.append(str(a)) 
+                if int(a) < 10:
+                    correct_answers.append("0" + str(a))
+                else:
+                    correct_answers.append(str(a)) 
 
         context = {
             "correct_answers": correct_answers,
         }
         print(correct_answers)
     # print(member.answered_comp)
-        return render(request, "questions/questionshome.html")
+        return render(request, "questions/questionshome.html", context=context)
     else:
         return redirect('/accounts/login')
 
-    return render(request, "questions/questionshome.html", context=context)
-       
 def ind_questions(request, id):
     question = Question.objects.get(id=id)
     context = {
