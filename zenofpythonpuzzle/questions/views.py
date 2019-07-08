@@ -4,10 +4,10 @@ from zenpythonpages.models import Member
 
 
 def q_home(request):
-    member = Member.objects.get(id=request.user.id)
-    print(member.answered_comp)
-    return render(request, "questions/questionshome.html")
-
+    if request.user.is_authenticated:
+        return render(request, "questions/questionshome.html")
+    else:
+        return redirect('/accounts/login')
 
 def ind_questions(request, id):
     question = Question.objects.get(id=id)
@@ -28,8 +28,11 @@ def submitted_answer(request, id):
                     member.answered_comp += str(request.POST['question'])
                 else:
                     member.answered_comp += "," + str(request.POST['question'])
-                    
+   
                 member.save()
+                return redirect("q_success")
+
+            else:
                 return redirect("q_success")
         else:
             return redirect("q_fail")
