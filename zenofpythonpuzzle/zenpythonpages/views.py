@@ -71,24 +71,22 @@ def delete_user(request, username):
     return redirect("home")
 
 def submit_q(request):
-    all_questions = SubmitQuestion.objects.all()
+    member = Member.objects.get(username=request.user.username)
+    all_questions = SubmitQuestion.objects.exclude(member=member)
     all_questions = all_questions[::-1]
-    context = {
-    }
 
-    # my_questions = SubmitQuestion.objects.get(id=request.POST["id"])
-    # my_questions = my_questions[::-1]
+    my_questions = SubmitQuestion.objects.filter(member=member)
+    my_questions = my_questions[::-1]
 
     context = {
-        "all_questions": all_questions,
-        # "my_questions": my_questions
+        "all_questions": all_questions[0:9],
+        "my_questions": my_questions[0:9]
     }
 
     if request.method == "POST":
-        member = Member.objects.get(username=request.user.username)
         new_q = SubmitQuestion(title=request.POST["title"], question=request.POST["question"], member=member)
         new_q.save()
         messages.success(request, f"Your question has been successfully submitted!")
-        return redirect("profile")
+        return redirect("submit_q")
     return render(request, "zenpythonpages/submitquestion.html", context=context)
 

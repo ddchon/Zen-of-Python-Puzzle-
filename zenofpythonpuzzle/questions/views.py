@@ -5,7 +5,18 @@ from zenpythonpages.models import Member
 
 def q_home(request):
     if request.user.is_authenticated:
-        return render(request, "questions/questionshome.html")
+      member = Member.objects.get(id=request.user.id)
+      correct_answers = []
+      print(correct_answers)
+      for a in member.answered_comp.split(","):
+        print(a)
+        if int(a) < 10:
+            correct_answers.append("0" + str(a))
+        else:
+            correct_answers.append(str(a))        
+    print(correct_answers)
+    # print(member.answered_comp)
+    return render(request, "questions/questionshome.html")
     else:
         return redirect('/accounts/login')
 
