@@ -5,7 +5,16 @@ from zenpythonpages.models import Member
 
 def q_home(request):
     member = Member.objects.get(id=request.user.id)
-    print(member.answered_comp)
+    correct_answers = []
+    print(correct_answers)
+    for a in member.answered_comp.split(","):
+        print(a)
+        if int(a) < 10:
+            correct_answers.append("0" + str(a))
+        else:
+            correct_answers.append(str(a))        
+    print(correct_answers)
+    # print(member.answered_comp)
     return render(request, "questions/questionshome.html")
 
 
