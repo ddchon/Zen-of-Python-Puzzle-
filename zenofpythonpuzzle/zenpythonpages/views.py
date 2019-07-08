@@ -83,17 +83,16 @@ def delete_user(request, username):
     return redirect("home")
 
 def submit_q(request):
-    all_questions = SubmitQuestion.objects.all()
+    member = Member.objects.get(username=request.user.username)
+    all_questions = SubmitQuestion.objects.exclude(member=member)
     all_questions = all_questions[::-1]
 
-    member = Member.objects.get(username=request.user.username)
     my_questions = SubmitQuestion.objects.filter(member=member)
     my_questions = my_questions[::-1]
 
     context = {
-        # "all_questions": all_questions[0:3],
-        "all_questions": all_questions,
-        "my_questions": my_questions
+        "all_questions": all_questions[0:9],
+        "my_questions": my_questions[0:9]
     }
 
     if request.method == "POST":
