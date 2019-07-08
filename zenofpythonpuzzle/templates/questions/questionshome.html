@@ -11,45 +11,121 @@
     <div id="zpython-container">
         <div class="row">
             {% if user.is_authenticated %}
-                <div id="zen_python">
-                    <div class="q-links">
-                        <a href="{% url 'ind_question' 1 %}">Beautiful is better than ugly.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 2 %}">Explicit is better than implicit.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 3 %}">Simple is better than complex.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 4 %}">Complex is better than complicated.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 5 %}">Flat is better than nested.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 6 %}">Sparse is better than dense.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 7 %}">Readability counts.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 8 %}">Special cases aren't special enough to break the rules.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 9 %}">Although practicality beats purity.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 10 %}">Errors should never pass silently.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 11 %}">Unless explicitly silenced.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 12 %}">In the face of ambiguity, refuse the temptation to guess.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 13 %}">There should be one -- and preferably only one -- obvious way to do it.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 14 %}">Although that way may not be obvious at first unless you're Dutch</a>
-                        <br>
-                        <a href="{% url 'ind_question' 15 %}">Now is better than never.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 16 %}">Although never is often better than *right* now.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 17 %}">If the implementation is hard to explain, it's a bad idea.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 18  %}">If the implementation is easy to explain, it may be a good idea.</a>
-                        <br>
-                        <a href="{% url 'ind_question' 19 %}">Namespaces are one honking great idea -- let's do more of those!</a>
+            <div id="zen_python">
+                <div class="q-links">
+                    {% if "01" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-1-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 1 %}">Beautiful is better than ugly.</a></p>
+                    {% endif %}
+
+                    {% if "02" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-2-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 2 %}">Explicit is better than implicit.</a></p>
+                    {% endif %}
+
+                    {% if "03" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-3-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 3 %}">Simple is better than complex.</a></p>
+                    {% endif %}
+
+                    {% if "04" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-4-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 4 %}">Complex is better than complicated.</a></p>
+                    {% endif %}
+                       
+                    {% if "05" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-5-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 5 %}">Flat is better than nested.</a></p>
+                    {% endif %}
+
+                    {% if "06" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-6-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 6 %}">Sparse is better than dense.</a></p>
+                    {% endif %}
+                    
+                    {% if "07" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-7-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 7 %}">Readability counts.</a></p>
+                    {% endif %}
+                    
+                    {% if "08" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-8-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 8 %}">Special cases aren't special enough to break the rules.</a></p>
+                    {% endif %}
+                    
+                    {% if "09" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-9-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 9 %}">Although practicality beats purity.</a></p>
+                    {% endif %}
+                    
+                    {% if "10" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-10-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 10 %}">Errors should never pass silently.</a></p>
+                    {% endif %}
+                    
+                    {% if "11" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-11-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 11 %}">Unless explicitly silenced.</a></p>
+                    {% endif %}
+                        
+                    {% if "12" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-12-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 12 %}">In the face of ambiguity, refuse the temptation to guess.</a></p>
+                    {% endif %}
+                
+                    {% if "13" in correct_answers %}
+                        <im class="q-pic" src='{% static "assets/row-13-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 13 %}">There should be one -- and preferably only one -- obvious way to do it.</a></p>
+                    {% endif %}
+                        
+                    {% if "14" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-14-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 14 %}">Although that way may not be obvious at first unless you're Dutch</a></p>
+                    {% endif %}
+                    
+                    {% if "15" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-15-col-1.jpg" %}'>
+                    {% else %}
+                         <p class="q-q"><a href="{% url 'ind_question' 15 %}">Now is better than never.</a></p>
+                    {% endif %}
+            
+                    {% if "16" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-16-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 16 %}">Although never is often better than *right* now.</a></p>
+                    {% endif %}
+                    
+                    {% if "17" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-17-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 17 %}">If the implementation is hard to explain, it's a bad idea.</a></p>
+                    {% endif %}
+                    
+                    {% if "18" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-18-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 18  %}">If the implementation is easy to explain, it may be a good idea.</a></p>
+                    {% endif %}
+                
+                    {% if "19" in correct_answers %}
+                        <img class="q-pic" src='{% static "assets/row-19-col-1.jpg" %}'>
+                    {% else %}
+                        <p class="q-q"><a href="{% url 'ind_question' 19 %}">Namespaces are one honking great idea -- let's do more of those!</a></p>
+                    {% endif %}
                     </div>
                 </div>
             {% else %}
