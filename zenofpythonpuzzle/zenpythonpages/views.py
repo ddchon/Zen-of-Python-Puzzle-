@@ -47,15 +47,14 @@ def new_user(request):
 @login_required(login_url='/')    
 def profile(request):
     member = Member.objects.get(username=request.user.username)
-    if not len(member.answered_comp) == 0:
+    answer_perc = 0
+    if len(member.answered_comp) != 0:
         answer_perc = (len(member.answered_comp.split(",")) * 100) / 19
-        context = {
+    
+    context = {
             "answer_perc" : answer_perc
-        }
-        print(answer_perc)
-        return render(request, "zenpythonpages/userprofile.html", context=context)
-
-    return render(request, "zenpythonpages/userprofile.html")
+    }
+    return render(request, "zenpythonpages/userprofile.html", context=context)
 
 def edit_profile(request):
     if request.method == "POST":
