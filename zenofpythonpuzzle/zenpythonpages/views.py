@@ -32,18 +32,18 @@ def new_user(request):
 # @login_required(login_url='/')    
 def profile(request):
     if request.user.is_authenticated:
-        member = Member.objects.get(username=request.user.username)
-        if not len(member.answered_comp) == 0:
-            answer_perc = (len(member.answered_comp.split(",")) * 100) / 19
-            context = {
-                "answer_perc" : answer_perc
-            }
-            print(answer_perc)
-            return render(request, "zenpythonpages/userprofile.html", context=context)
-        return render(request, "zenpythonpages/userprofile.html")
+    	member = Member.objects.get(username=request.user.username)
+    	answer_perc = 0
+    	if len(member.answered_comp) != 0:
+     	   answer_perc = (len(member.answered_comp.split(",")) * 100) / 19
+    
+    	context = {
+    	        "answer_perc" : answer_perc
+    	}
+    	return render(request, "zenpythonpages/userprofile.html", context=context)
 
-    else:
-        return redirect('/accounts/login')
+    	else:
+        	return redirect('/accounts/login')
 
 def edit_profile(request):
     if request.method == "POST":

@@ -22,8 +22,18 @@ body {
 
 .q-links {
     align-content: center;
+    padding: 5px;
 }
-
+.q-pic {
+  display: block;
+  padding: 0px;
+  width: 100%;
+  margin: 0px;
+}
+.q-q {
+  padding: 0px;
+  margin: 7px;  
+}
 #zen_python {
     width: 50%;
     height: 75%;
