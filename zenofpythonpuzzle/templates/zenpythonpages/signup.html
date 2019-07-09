@@ -13,14 +13,6 @@
                 <p>
                     {{ i.label_tag}}
                     {{ i }}
-{% comment %} 
-                    <form action="{% url upload_pic %}" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <p>
-                            <input id="id_image" type="file" class="" name="image">
-                        </p>
-                        <input type="submit" value="submit"/>
-                    </form> {% endcomment %}
 
                     {% if i.help_text %}
                         <small style="color: gray;">{{ i.help_text }}</small>
