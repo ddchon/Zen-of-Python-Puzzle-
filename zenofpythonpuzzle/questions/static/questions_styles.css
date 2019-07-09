@@ -1,5 +1,4 @@
 h2 {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-weight: bold;
 }
  
@@ -14,7 +13,6 @@ body {
 }
 
 #zpython-container {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     align-content: center;
     padding-top: 5px;
     text-align: center;
