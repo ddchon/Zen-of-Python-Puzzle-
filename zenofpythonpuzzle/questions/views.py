@@ -8,15 +8,20 @@ def q_home(request):
         member = Member.objects.get(id=request.user.id)
         correct_answers = []
         print(correct_answers)
-        for a in member.answered_comp.split(","):
-            print(a)
-            if int(a) < 10:
-                correct_answers.append("0" + str(a))
-            else:
-                correct_answers.append(str(a))        
+        if len(member.answered_comp) > 0:
+            for a in member.answered_comp.split(","):
+                print(a)
+                if int(a) < 10:
+                    correct_answers.append("0" + str(a))
+                else:
+                    correct_answers.append(str(a)) 
+
+        context = {
+            "correct_answers": correct_answers,
+        }
         print(correct_answers)
     # print(member.answered_comp)
-        return render(request, "questions/questionshome.html")
+        return render(request, "questions/questionshome.html", context=context)
     else:
         return redirect('/accounts/login')
 
@@ -26,8 +31,8 @@ def ind_questions(request, id):
         "question": question
     }
     print(question)
+    
     return render(request, "questions/ind_question.html", context=context)
-
 
 def submitted_answer(request, id):
     if request.method == "POST":
@@ -59,10 +64,8 @@ def new_question(request):
         question_list.save()
         return redirect("q_home")
 
-
 def q_success(request):
     return render(request, "questions/q_success.html")
-
 
 def q_fail(request):
     return render(request, "questions/q_fail.html")
