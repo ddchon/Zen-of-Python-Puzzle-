@@ -27,6 +27,12 @@ nav {
     text-align: center;
 }
 
-a:hover {
-    background-color: white;
+#user_info {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+#list_group {
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 0px;
+    margin-bottom: 0px;
 }
