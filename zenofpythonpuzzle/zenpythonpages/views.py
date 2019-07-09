@@ -20,7 +20,7 @@ def new_user(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(email=email, password=raw_password)
             login(request, account)
-            messages.success(request, f"Your account has been created!")
+            messages.success(request, "Your account has been created!")
             return redirect('profile')
         else:
             context['registration_form'] = form

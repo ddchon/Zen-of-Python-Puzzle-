@@ -14,8 +14,13 @@
     <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
 </head>
 <body>
-    
+
     {% include "partials/nav.html" %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} mt-5">{{ message }}</div>
+            {% endfor%}
+        {% endif%}
 
     {% block content %}
 

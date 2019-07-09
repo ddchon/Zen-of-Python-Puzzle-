@@ -2,17 +2,36 @@
 {% load static %}
 {% block content %}
 
-    <div id="q_fail-container">
-        <h2 class="fail_heading" style="text-align: center">Shucks! Looks like you've been bamboozled!</h2>
+<br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center pt-5">
+                <h1 class="fail_heading" style="font-weight: bold; text-align: center">Shucks! Looks like you've been bamboozled!</h1>
 
-        {% comment %} <a href="javascript:history.back()">Try Again?</a> {% endcomment %}
-        <button type="button" onclick="javascript:history.back()">Try Again?</button>
-        <br>
-        {% comment %} <a href="{% url 'q_home' %}">Back to Zen of Python</a> {% endcomment %}
-        <button type="button" onclick="window.location.href = '{% url "q_home" %}'">Back to Zen of Python</button>
-        <br>
-        {% comment %} <a href="{% url 'profile' %}">Back to User Profile</a> {% endcomment %}
-        <button type="button" onclick="window.location.href = '{% url "profile" %}'">Back to User Profile</button>
+                <a href="javascript:history.back()">Try Again?</a>
+                {% comment %} <button type="button" onclick="javascript:history.back()">Try Again?</button> {% endcomment %}
+                <br>
+                <a href="{% url 'q_home' %}">Back to Zen of Python</a>
+                {% comment %} <button type="button" onclick="window.location.href = '{% url "q_home" %}'">Back to Zen of Python</button> {% endcomment %}
+                <br>
+                <a href="{% url 'profile' %}">Back to User Profile</a>
+                {% comment %} <button type="button" onclick="window.location.href = '{% url "profile" %}'">Back to User Profile</button> {% endcomment %}
+            </div>
+        </div>
     </div>
+
+    {% comment %} <div class="container">
+        <div class="row">
+            <div class="col-12 text-center pt-5">
+            {% comment %} remove inline styling {% endcomment %}
+                {% comment %} <h1 style="font-weight:bold;font-size:90px">Success!</h1>
+                <div>
+                    <a href="{% url 'q_home' %}">Try Another</a>
+                    <br>
+                    <a href="{% url 'profile' %}">Back to Profile</a>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
 
 {% endblock content %}
