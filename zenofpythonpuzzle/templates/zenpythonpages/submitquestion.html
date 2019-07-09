@@ -7,13 +7,13 @@
             <br>
             <br>
             <br>
-            <h3 class="table_heading" style="text-align: center">Have a puzzle you'd like to share?</h3>
+            <h1 class="table_heading" style="text-align: center; font-weight: bold;">Have a puzzle you'd like to share?</h1>
 
             <form action="{% url 'submit_q' %}" method="POST">
                 {% csrf_token %}
-                <input name="title" type="text" placeholder="Put a title here" required style="margin: 2em 41.5em;">
-                <textarea name="question" id="question" cols="30" rows="10" placeholder="Type your question here" style="margin: 2em 5em 2em 40em;"></textarea>
-                <input type="submit" style="align-content: center;">
+                <input name="title" type="text" placeholder="Put a title here" required style="margin: 1em 41.5em 0;">
+                <textarea name="question" id="question" cols="30" rows="10" placeholder="Type your question here" style="margin: 2em 40em 0em;"></textarea>
+                <input type="submit" style="margin: 0 45em 5em;">
             </form>   
         </div>
         <div>
