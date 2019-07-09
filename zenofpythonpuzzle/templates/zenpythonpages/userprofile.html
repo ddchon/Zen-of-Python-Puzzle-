@@ -14,7 +14,7 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin: 0 3em;">
             <div class=".col-6">
                 <img class="rounded-circle account-img" src="{{ user.image.url }}" alt="ProfilePic" enctype="multipart/form-data" style="width: 25em; height: 25em;">
             </div>
@@ -47,9 +47,9 @@
         </div>
         <br>
         <div class="row">
-            <h5 style="margin: 0 22% 2%;">Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
+            <h5 style="margin: 0 3em 1em 20em;">Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
                 <a href="{% url 'q_home' %}"</a>
-                <img src="/media/win95-prompt.png" class="cmd_img" alt="cmd_terminal" style="margin: 0 20em; width: 50em; height: 30em;">
+                <img src="/media/win95-prompt.png" class="cmd_img" alt="cmd_terminal" style="margin: 3em 25em 5em; width: 50em; height: 30em;">
         </div>
     </div>
             {% else %}
