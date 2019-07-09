@@ -3,60 +3,67 @@
 
 {% block content %}
 
-    <div class="container">
-    <br>
-    <br>
-    <br>
-        <div class="row">
+<div class="container" id="main-top">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
             {% if user.is_authenticated %}
-                <h1>Welcome {{ user.username }}!</h1>
-                <p><a href="{% url 'logout' %}">Logout</a></p>
+            <h1 style="text-align: center;">Welcome {{ user.username }}!</h1>
         </div>
+        <div class="col-4">
+            <a href="{% url 'logout' %}" style="float: right;">Logout</a>
+        </div>
+    <br>
+    <br>
+    <br>
     </div>
+</div>
 
-    <div class="container">
-        <div class="row" style="margin: 0 3em;">
-            <div class=".col-6">
-                <img class="rounded-circle account-img" src="{{ user.image.url }}" alt="ProfilePic" enctype="multipart/form-data" style="width: 25em; height: 25em;">
-            </div>
-            <div class=".col-6">
-                <div class="card" style="margin: 0 100px; width: 25rem; height: 25em;">
-                    <div class="card-body">
+<div class="container">
+    <div class="row" style="margin: 0 3em;">
+        <div class="col-6">
+            <img class="rounded-circle account-img" src="{{ user.image.url }}" alt="ProfilePic" enctype="multipart/form-data" style="width: 25em; height: 25em;">
+        </div>
+        <div class="col-6">
+            <div class="card"  id="user_info" style="margin: 0 100px; width: 25rem; height: 25em;">
+                <div class="card-body">
                     <h5 class="card-title">{{ user.username}}</h5>
                     <p class="card-text">{{ user.bio }}</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{ user.first_name}} {{ user.last_name}}</li>
-                        <li class="list-group-item">{{ user.email }}</li>
-                        <li class="list-group-item">Joined: {{  user.date_joined }}</li>
-                    </ul>
-                    <a href="{% url 'editprofile' %}">Update Profile</a>
-                    <a href="{% url 'submit_q' %}">Submit a Question</a>
-                    <a href="{% url 'delete_user' user.username %}">Delete Profile</a>
                 </div>
+                <ul class="list-group">
+                    <li class="list-group-item" id="list_group">{{ user.first_name}} {{ user.last_name}}</li>
+                    <li class="list-group-item" id="list_group">{{ user.email }}</li>
+                    <li class="list-group-item" id="list_group">Joined: {{  user.date_joined }}</li>
+                </ul>
+                <a href="{% url 'editprofile' %}">Update Profile</a>
+                <a href="{% url 'submit_q' %}">Submit a Question</a>
+                <a href="{% url 'delete_user' user.username %}">Delete Profile</a>
             </div>
         </div>
     </div>
-    <br>
-    <div class="container">
-        <div class="row"></div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
         <br>
         <h5>Your progress:</h5>
         <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{ answer_perc }}%"></div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <h5 style="margin: 0 3em 1em 20em;">Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
-                <a class="cmd-terminal" href="{% url 'q_home' %}"</a>
-                <img src="{% static 'assets/win95-prompt.png' %}" class="cmd_img" alt="cmd_terminal" style="margin: 3em 25em 5em; width: 50em; height: 30em;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{ answer_perc }}%"></div>
         </div>
     </div>
-            {% else %}
-                <p>You are not logged in </p>
-                <br>
-                <a href="{% url 'home' %}">Go to Home</a>
-            {% endif %} 
+<br>
+    <div class="row" id="cmd_term">
+        <h5>Get STARTED or get BACK to cracking the Zen of Python puzzles by CLICKING below!</h5>
+        <a class="cmd-terminal" href="{% url 'q_home' %}">
+            <img src="{% static 'assets/win95-prompt.png' %}" class="cmd_img" alt="cmd_terminal">
+        </a>
+    </div>
+</div>
+
+{% else %}
+<p>You are not logged in </p>
+<br>
+<a href="{% url 'home' %}">Go to Home</a>
+{% endif %} 
 
 {% endblock content %}
