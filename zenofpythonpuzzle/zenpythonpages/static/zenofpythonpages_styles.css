@@ -1,24 +1,11 @@
-#footer {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    padding: .10%;
-    background-color: black;
-    text-align: center;
-    color: white !important;
-    font-size: small;
-    z-index: auto;
-}
-
-.my_navbar {
+#my_navbar {
     position: fixed;
     width: 100vw;
     padding: .10%;
     background-color: black;
     text-align: center;
-    color: white !important;
     font-size: small;
-    z-index: auto;
+    z-index: 100;
 }
 
 nav {
@@ -35,4 +22,35 @@ nav {
     background-color: rgba(0, 0, 0, 0.0);
     border: 0px;
     margin-bottom: 0px;
+}
+.progress {
+    width: 100vw;
+    background-color: linear-gradient(90deg, #ffff80 25%, #1a8cff 75%);
+    border: black 1px solid;
+}
+
+#welcome_row {
+    margin: auto;
+    padding: auto;
+}
+
+#main-top {
+    margin-top: 3%;
+    width: 100%;
+    max-width: 100%;
+}
+
+#cmd_term {
+    margin-left: 15%;
+    margin-top: 2%;
+}
+
+.cmd-terminal {
+    margin-left: 4%;
+    margin-top: 3%;
+}
+
+.cmd_img {
+    width: 700px;
+    height: 400px;
 }
