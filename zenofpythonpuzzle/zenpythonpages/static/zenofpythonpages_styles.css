@@ -14,6 +14,10 @@ nav {
     text-align: center;
 }
 
+.nav-right{
+    padding-right: 5px;
+}
+
 #user_info {
     background-color: rgba(0, 0, 0, 0.1) !important;
 }
@@ -54,4 +58,17 @@ nav {
     width: 700px;
     height: 400px;
     margin-bottom: 10%;
+}
+
+#user-question {
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.sq-body {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+#q-body {
+    margin-bottom: 3%;
 }
