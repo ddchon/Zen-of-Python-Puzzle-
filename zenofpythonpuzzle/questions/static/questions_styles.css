@@ -8,14 +8,16 @@ body {
 }
 #master-container {
     padding-top: 5%;
-    padding-left: 25%;
+    padding-left: 35%;
     margin: 0 12em 0 12em;
+    text-align: center;
 }
 
 #zpython-container {
     align-content: center;
     padding-top: 5px;
     text-align: center;
+    padding-left: 10%;
 }
 
 .q-links {
