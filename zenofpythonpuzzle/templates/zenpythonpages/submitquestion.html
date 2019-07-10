@@ -4,30 +4,27 @@
 
     <div id="contact-container">
         <div id="qsubmit-table">
-
-            <h2 class="table_heading" style="text-align: center">Have a puzzle you'd like to share?</h2>
-
             <br>
             <br>
+            <br>
+            <h1 class="table_heading" style="text-align: center; font-weight: bold;">Have a puzzle you'd like to share?</h1>
 
-            <form action="{% url 'submit_q' %}" method="POST">
+            <form action="{% url 'submit_q' %}" method="POST" id="user-question" style="text-align: center;">
                 {% csrf_token %}
-                <input name="title" type="text" placeholder="Put a title here" required>
-                <br>
-                <textarea name="question" id="question" cols="30" rows="10">Type a question here.</textarea>
-                <input type="submit">
+                <input name="title" type="text" placeholder="Put a title here" required style="margin: 1em 41.5em 0;">
+                <textarea name="question" id="question" cols="30" rows="10" placeholder="Type your question here" style="margin: 2em 40em 0em;"></textarea>
+                <input type="submit" style="margin: 0 45em 5em;">
             </form>   
         </div>
         <div>
-            <div class="container">
-
+            <div class="container" id="q-body">
                 <div class="row">
-                    <div class="col-6">
-                        <h2>Other User's Submitted Questions</h2>
+                    <div class="col-6" id="other-sq">
+                        <h3 style="text-align: center;">Other User's Submitted Questions</h3>
                         {% if all_questions %}
                             {% for i in all_questions %}
 
-                                <div class="card">
+                                <div class="card sq-body">
                                     <div class="card-body">
                                         <p>{{ i.member }}</p>
                                         <p>{{ i.title }}</p>
@@ -40,11 +37,11 @@
                     </div>
 
                     <div class="col-6">
-                        <h2>My Submitted Questions</h2>
+                        <h3 style="text-align: center;">My Submitted Questions</h3>
                         {% if my_questions %}
                             {% for i in my_questions %}
 
-                                <div class="card">
+                                <div class="card sq-body">
                                     <div class="card-body">
                                         <p>{{ i.member }}</p>
                                         <p>{{ i.title }}</p>

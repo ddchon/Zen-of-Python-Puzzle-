@@ -20,7 +20,7 @@ def new_user(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(email=email, password=raw_password)
             login(request, account)
-            messages.success(request, f"Your account has been created!")
+            messages.success(request, "Your account has been created!")
             return redirect('profile')
         else:
             context['registration_form'] = form
@@ -32,15 +32,15 @@ def new_user(request):
 # @login_required(login_url='/')    
 def profile(request):
     if request.user.is_authenticated:
-        member = Member.objects.get(username=request.user.username)
-        if not len(member.answered_comp) == 0:
-            answer_perc = (len(member.answered_comp.split(",")) * 100) / 19
-            context = {
-                "answer_perc" : answer_perc
-            }
-            print(answer_perc)
-            return render(request, "zenpythonpages/userprofile.html", context=context)
-        return render(request, "zenpythonpages/userprofile.html")
+    	member = Member.objects.get(username=request.user.username)
+    	answer_perc = 0
+    	if len(member.answered_comp) != 0:
+     	   answer_perc = (len(member.answered_comp.split(",")) * 100) / 19
+    
+    	context = {
+    	        "answer_perc" : answer_perc
+    	}
+    	return render(request, "zenpythonpages/userprofile.html", context=context)
 
     else:
         return redirect('/accounts/login')

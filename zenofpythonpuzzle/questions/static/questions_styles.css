@@ -1,5 +1,4 @@
 h2 {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-weight: bold;
 }
  
@@ -9,21 +8,32 @@ body {
 }
 #master-container {
     padding-top: 5%;
-    padding-left: 25%;
+    padding-left: 35%;
     margin: 0 12em 0 12em;
+    text-align: center;
 }
 
 #zpython-container {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     align-content: center;
     padding-top: 5px;
     text-align: center;
+    padding-left: 10%;
 }
 
 .q-links {
     align-content: center;
+    padding: 5px;
 }
-
+.q-pic {
+  display: block;
+  padding: 0px;
+  width: 100%;
+  margin: 0px;
+}
+.q-q {
+  padding: 0px;
+  margin: 7px;  
+}
 #zen_python {
     width: 50%;
     height: 75%;
