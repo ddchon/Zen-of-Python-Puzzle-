@@ -86,7 +86,7 @@
                     {% endif %}
                 
                     {% if "13" in correct_answers %}
-                        <im class="q-pic" src='{% static "assets/row-13-col-1.jpg" %}'>
+                        <img class="q-pic" src='{% static "assets/row-13-col-1.jpg" %}'>
                     {% else %}
                         <p class="q-q"><a href="{% url 'ind_question' 13 %}">There should be one -- and preferably only one -- obvious way to do it.</a></p>
                     {% endif %}
